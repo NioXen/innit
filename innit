@@ -4,8 +4,12 @@ set -euo pipefail
 
 u ="$(uname -s)"
 
-
 if [[ "$u" = "Linux" ]]; then
+	if ! command -v pacman &>/dev/null; then
+		echo "You didn't account for this"
+		exit 1
+	fi
+
 	pacman -Sy \
 		base-devel \
 		git
@@ -24,5 +28,6 @@ elif [[ "$u" = "Darwin" ]]; then
 	brew install --cask 1password
 else
 	echo "Oh, you thought you wouldn't want to use this anywhere else?"
+	exit 1
 fi
 
