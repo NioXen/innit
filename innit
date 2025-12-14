@@ -10,10 +10,7 @@ if [[ "$u" = "Linux" ]]; then
 		exit 1
 	fi
 
-	pacman -Sy \
-		base-devel \
-		git \
-		chezmoi
+	su -c "pacman -Sy base-devel git chezmoi"
 
 	curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
