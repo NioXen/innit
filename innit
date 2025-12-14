@@ -12,7 +12,8 @@ if [[ "$u" = "Linux" ]]; then
 
 	pacman -Sy \
 		base-devel \
-		git
+		git \
+		chezmoi
 
 	curl -sS https://downloads.1password.com/linux/keys/1password.asc | gpg --import
 
@@ -25,7 +26,9 @@ if [[ "$u" = "Linux" ]]; then
 	rm -rf 1password
 	
 elif [[ "$u" = "Darwin" ]]; then
+	brew install chezmoi
 	brew install --cask 1password
+
 else
 	echo "Oh, you thought you wouldn't want to use this anywhere else?"
 	exit 1
